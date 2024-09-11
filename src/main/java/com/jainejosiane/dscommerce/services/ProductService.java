@@ -44,4 +44,34 @@ public class ProductService {
         */
         return products.map(ProductDTO::new);
     }
+
+    @Transactional
+    public ProductDTO insert(ProductDTO dto) {
+        Product entity = new Product();
+        copyToDtoToEntity(dto, entity);
+        repository.save(entity);
+
+        return new ProductDTO(entity);
+    }
+
+    @Transactional
+    public ProductDTO update(ProductDTO dto, Long id) {
+        Product entity = repository.getReferenceById(id);
+        copyToDtoToEntity(dto, entity);
+        repository.save(entity);
+
+        return new ProductDTO(entity);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    private void copyToDtoToEntity(ProductDTO dto, Product entity) {
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setImgUrl(dto.getImgUrl());
+    }
 }
