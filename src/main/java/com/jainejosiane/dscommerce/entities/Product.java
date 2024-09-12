@@ -1,6 +1,7 @@
 package com.jainejosiane.dscommerce.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,10 +14,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
     private Double price;
+
     private String imgUrl;
 
     @ManyToMany()

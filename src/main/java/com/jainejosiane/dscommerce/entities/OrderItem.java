@@ -12,6 +12,7 @@ public class OrderItem {
     private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
+
     private Double price;
 
     public OrderItem() {}
