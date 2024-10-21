@@ -1,5 +1,6 @@
 package com.jainejosiane.dscommerce.services;
 
+import com.jainejosiane.dscommerce.entities.Role;
 import com.jainejosiane.dscommerce.entities.User;
 import com.jainejosiane.dscommerce.projections.UserDetailsProjection;
 import com.jainejosiane.dscommerce.repositories.UserRepository;
@@ -7,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService implements UserDetailsService {
 
     @Autowired
@@ -29,5 +32,4 @@ public class UserService implements UserDetailsService {
         }
         return user;
     }
-
 }
