@@ -2,10 +2,7 @@ package com.jainejosiane.dscommerce.dto;
 
 import com.jainejosiane.dscommerce.entities.Category;
 import com.jainejosiane.dscommerce.entities.Product;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.apache.logging.log4j.message.Message;
 
 import java.util.ArrayList;
@@ -23,6 +20,7 @@ public class ProductDTO {
     @NotBlank(message = "Required field")
     private String description;
 
+    @NotNull(message = "Required field")
     @Positive(message = "Price must be positive")
     private Double price;
 
