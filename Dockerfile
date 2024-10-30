@@ -1,15 +1,16 @@
 FROM ubuntu:latest AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk maven && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY . .
 
-RUN apt-get install maven -y
 RUN mvn clean install
 
 FROM openjdk:17-jdk-slim
 
-# Defina variáveis de ambiente
 ENV APP_PROFILE=prod
 ENV CLIENT_ID=myclientid
 ENV CLIENT_SECRET=myclientsecret
