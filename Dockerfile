@@ -5,9 +5,15 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+FROM ubuntu:latest AS build
+
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+RUN apt-get install maven -y
 COPY . .
 
 RUN mvn clean install
+RUN ls -la /target
 
 FROM openjdk:17-jdk-slim
 
@@ -20,8 +26,6 @@ ENV CORS_ORIGINS=http://localhost:3000,http://localhost:5173
 
 EXPOSE 8080
 
-RUN ls -la /target
-
-COPY --from=build /target/dscommerce_deploy.jar app.jar
+COPY --from=build /target/dscommerce_deploy-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
