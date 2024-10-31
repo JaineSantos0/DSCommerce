@@ -1,3 +1,4 @@
+# Etapa de build
 FROM ubuntu:latest AS build
 
 RUN apt-get update && \
@@ -5,19 +6,15 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM ubuntu:latest AS build
-
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
-RUN apt-get install maven -y
+WORKDIR /app
 COPY . .
 
 RUN mvn clean install
-RUN ls -la /target
 
+# Etapa final
 FROM openjdk:17-jdk-slim
 
-ENV APP_PROFILE=prod
+ENV APP_PROFILE=teste
 ENV CLIENT_ID=myclientid
 ENV CLIENT_SECRET=myclientsecret
 ENV JWT_SECRET=myjwtsecret
@@ -26,6 +23,6 @@ ENV CORS_ORIGINS=http://localhost:3000,http://localhost:5173
 
 EXPOSE 8080
 
-COPY --from=build /target/dscommerce_deploy.jar app.jar
+COPY --from=build /app/target/dscommerce_deploy.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
