@@ -46,9 +46,6 @@
 <p>Clone o repositório:</p>
 <pre><code>git clone https://github.com/JaineSantos0/DSCommerce.git</code></pre>
 
-<p>Troque o valor da variável profile contida no arquivo application.properties para test: </p>
-<pre><code>spring.profiles.active=test</code></pre>
-
 <p>Compile e rode a aplicação:</p>
 <pre><code>mvn clean install</code></pre>
 <pre><code>mvn spring-boot:run</code></pre>
@@ -106,9 +103,14 @@
     │   │   ├── resources/
     │   │   │   ├── application.properties
     │   │   │   ├── application-dev.properties
-    │   │   │   ├── application-prod.properties
-    │   │   │   └── application-test.properties
-    └── Dockerfile</code></pre>
+    │   │   │   └── application-prod.properties
+    │   ├── test/
+    │   │   ├── java/
+    │   │   │   └── dscommerce/
+    │   │   └── resources/
+    │   │       └── application-test.properties
+    └── Dockerfile
+
 
 <h2>Autor</h2>
 <p>Nome: Jaine Santos</p>
