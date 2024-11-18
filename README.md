@@ -55,7 +55,7 @@
     <li>URL: <a href="http://localhost:8080/h2-console">http://localhost:8080/h2-console</a></li>
     <li>JDBC URL: jdbc:h2:mem</li>
     <li>Username: sa</li>
-    <li>Password: (deixe vazio)</li>
+    <li>Password: password</li>
 </ul>
 
 <h2>Endpoints</h2>
