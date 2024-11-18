@@ -104,11 +104,7 @@
     │   │   │   ├── application.properties
     │   │   │   ├── application-dev.properties
     │   │   │   └── application-prod.properties
-    │   ├── test/
-    │   │   ├── java/
-    │   │   │   └── dscommerce/
-    │   │   └── resources/
-    │   │       └── application-test.properties
+    |   │   │   └── application-test.properties
     └── Dockerfile
 
 
