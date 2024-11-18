@@ -53,7 +53,7 @@
 <p>Acessando o Console H2:</p>
 <ul>
     <li>URL: <a href="http://localhost:8080/h2-console">http://localhost:8080/h2-console</a></li>
-    <li>JDBC URL: jdbc:h2:mem</li>
+    <li>JDBC URL: jdbc:h2:mem:testdb</li>
     <li>Username: sa</li>
     <li>Password: password</li>
 </ul>
